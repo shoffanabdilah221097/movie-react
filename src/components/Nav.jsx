@@ -1,4 +1,9 @@
 function Nav() {
+  function handleLogout() {
+    localStorage.clear()
+    window.location.reload()
+  }
+  const isLogin = JSON.parse(localStorage.getItem('session'))
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark text-light sticky-top">
@@ -38,9 +43,11 @@ function Nav() {
                 Search
               </button>
             </form>
-            <button type="button" className="btn btn-outline-light ms-2" data-bs-toggle="modal" data-bs-target="#modalLogin">
+            {!isLogin? (<button type="button" className="btn btn-outline-light ms-2" data-bs-toggle="modal" data-bs-target="#modalLogin">
               Login
-            </button>
+            </button>):(<button type="button" className="btn btn-outline-light ms-2" onClick={handleLogout}>
+              Logout
+            </button>)}
           </div>
         </div>
       </nav>

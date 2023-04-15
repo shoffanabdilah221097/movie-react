@@ -19,8 +19,18 @@ function Login() {
           .then((response2) => {
             apiTmdb.post("authentication/session/new", {
               request_token: response2.data.request_token,
-            });
-          });
+            })
+          .then((response3) => {
+            localStorage.setItem("session", JSON.stringify(response3.data.session_id))
+            apiTmdb.get("account", {
+              params: {session_id:response3.data.session_id}
+            })
+            .then((response4) => {
+              window.location.reload();
+              console.log(response4.data);
+            })
+          })
+          })
       })
       .catch((error) => {
         alert(error.message);
@@ -57,7 +67,7 @@ function Login() {
                     </label>
                   </div>
                   <div className="d-grid gap-2">
-                    <button onClick={handleLogin} type="submit" className="btn btn-primary">
+                    <button onClick={(e) => handleLogin(e)} type="submit" className="btn btn-primary">
                       Submit
                     </button>
                   </div>
