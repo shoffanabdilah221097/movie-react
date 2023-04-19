@@ -181,6 +181,15 @@ button[type="submit"]{
 }
 /* Login End */
 
+/*Logout Start*/
+.dropdown-menu {
+  height: 50px;
+}
+
+.dropdown-item:hover {
+  cursor: pointer;
+}
+/*Logout End*/
 
 .logo:hover {
   cursor: pointer;

@@ -1,4 +1,4 @@
-function ModalCard(movie, i) {
+function ModalCard(movie) {
   
   return (
     <>
